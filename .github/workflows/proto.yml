@@ -5,6 +5,9 @@ on:
       - master
     paths:
       - "apis/proto/**"
+  pull_request:
+    paths:
+      - "apis/proto/**"
 
 jobs:
   build:
