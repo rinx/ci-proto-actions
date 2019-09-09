@@ -11,14 +11,18 @@ jobs:
     name: build all
     runs-on: ubuntu-latest
     steps:
-      - run: pwd
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y libprotobuf-dev libprotoc-dev protobuf-compiler
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libprotobuf-dev libprotoc-dev protobuf-compiler
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - run: mkdir -p $HOME/local
-      - run: wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-      - run: tar xzvf go1.13.linux-amd64.tar.gz
-      - run: mv go $HOME/local/go
-      - run: GOPATH=$HOME/go PATH=$PATH:$HOME/local/go/bin make
+      - run: |
+          mkdir -p $HOME/local
+          wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
+          tar xzvf go1.13.linux-amd64.tar.gz
+          mv go $HOME/local/go
+      - run: |
+          export GOPATH=$HOME/go
+          export PATH=$PATH:$HOME/local/go/bin:$HOME/go/bin
+          make
