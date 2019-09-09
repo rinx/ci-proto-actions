@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - "apis/proto/**"
+    paths:
+      - "apis/proto/**"
 
 jobs:
   build:
