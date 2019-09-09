@@ -1,9 +1,16 @@
 name: build proto files
-on: push
+on:
+  push:
+    branches:
+      - master
+    # paths:
+    #   - "apis/proto/**"
 
 jobs:
   build:
     name: build all
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello"
+      - run: apt-get update
+      - run: apt-get install -y libprotobuf-dev libprotoc-dev protobuf-compiler
+      - run: make
