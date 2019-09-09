@@ -13,6 +13,10 @@ service Sample {
         option (google.api.http).get = "/v1/search";
         option (gql.rpc_type) = QUERY;
     }
+    rpc User(Empty) returns(Empty) {
+        option (google.api.http).get = "/v1/user";
+        option (gql.rpc_type) = QUERY;
+    }
 }
 
 message Empty {}
