@@ -18,11 +18,13 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - run: |
+      - env:
+          GOLANG_VERSION: 1.13
+        run: |
           echo "Install golang"
           mkdir -p $HOME/local
-          wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-          tar xzvf go1.13.linux-amd64.tar.gz
+          wget https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz
+          tar xzvf go${GOLANG_VERSION}.linux-amd64.tar.gz
           mv go $HOME/local/go
       - run: |
           echo "build protobuf"
