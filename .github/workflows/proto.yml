@@ -17,10 +17,8 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - run: export GOPATH=$HOME/go
       - run: mkdir -p $HOME/local
       - run: wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz
       - run: tar xzvf go1.13.linux-amd64.tar.gz
       - run: mv go $HOME/local/go
-      - run: export PATH=$PATH:$HOME/local/go/bin
-      - run: make
+      - run: GOPATH=$HOME/go PATH=$PATH:$HOME/local/go/bin make
